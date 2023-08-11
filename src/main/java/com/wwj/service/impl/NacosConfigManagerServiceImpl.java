@@ -28,17 +28,8 @@ public class NacosConfigManagerServiceImpl implements NacosConfigManagerService 
     @Resource
     GogsConfigFileService gogsConfigFileService;
 
-    @Value("${nacos.server.wuxiSand}")
-    private String serverAddr_wuxiSand;
-
-    @Value("${nacos.server.nanjingSand}")
-    private String serverAddr_nanjingSand;
-
-    @Value("${nacos.server.wuxi}")
-    private String serverAddr_wuxi;
-
-    @Value("${nacos.server.nanjing}")
-    private String serverAddr_nanjing;
+    @Value("${nacos.server}")
+    private String serverAddr;
 
     private static final Logger logger = LogManager.getLogger(ReceiveController.class);
 
@@ -75,9 +66,9 @@ public class NacosConfigManagerServiceImpl implements NacosConfigManagerService 
         flagok = flagok && safeAuth(removed, "removed");
         if(flagok) {
             updateNacosConfigFile(ansModified, false, full_name, branch);
-//            logger.info(ansModified);
+            logger.info(ansModified);
             updateNacosConfigFile(ansRemoved, true, full_name, branch);
-//            logger.info(ansRemoved);
+            logger.info(ansRemoved);
         } else {
             throw new RuntimeException("文件信息有误");
         }
@@ -128,7 +119,7 @@ public class NacosConfigManagerServiceImpl implements NacosConfigManagerService 
 
     public void handleNacosConfig(String dataId, String group, String content, boolean isDeleted) {
         Properties properties = new Properties();
-        properties.put("serverAddr", serverAddr_wuxiSand);
+        properties.put("serverAddr", serverAddr);
         boolean isPublishOk;
         try {
             ConfigService configService = NacosFactory.createConfigService(properties);

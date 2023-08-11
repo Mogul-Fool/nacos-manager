@@ -1,20 +1,44 @@
 server:
-  port: 10002  #启动端口
+  port: 10000  #启动端口
 spring:
   files:
     yamlFiles:
-      - dataId: bootstrap1.yml
+      - dataId: nanjing.yml
         group: DEFAULT_GROUP
-      - dataId: bootstrap2.yml
+      - dataId: yancheng.yml
         group: DEFAULT_GROUP
-      - dataId: bootstrap3.yml
+      - dataId: wuxi.yml
+        group: DEFAULT_GROUP
+      - dataId: changzhou.yml
+        group: DEFAULT_GROUP
+      - dataId: suzhou.yml
+        group: DEFAULT_GROUP
+      - dataId: xuzhou.yml
+        group: DEFAULT_GROUP
+      - dataId: yangzhou.yml
+        group: DEFAULT_GROUP
+      - dataId: taizhou.yml
+        group: DEFAULT_GROUP
+      - dataId: lianyungang.yml
+        group: DEFAULT_GROUP
+      - dataId: huaian.yml
+        group: DEFAULT_GROUP
+      - dataId: nantong.yml
+        group: DEFAULT_GROUP
+      - dataId: zhenjiang.yml
+        group: DEFAULT_GROUP
+      - dataId: suqian.yml
         group: DEFAULT_GROUP
     branches:
       - master
       - wwj
-    gogsToken: 83d583f4cf65c78bedbbeaf234bb0f104b5b7d38
+      - dev
+      - test
+      - release
+      - main
+    gogsToken: 02b90b42ef205b3c0309bf8d3dc9df7ef0e3e804
   application:
-    name: iot-nacos-manager
+    name: nacos-manager
   cloud:
     nacos:
       discovery:
@@ -24,12 +48,8 @@ spring:
       config:
         server-addr: ${spring.cloud.nacos.discovery.server-addr}
         file-extension: yaml
-        name: iot-nacos-manager
+        name: nacos-manager
 gogs:
-  server: 127.0.0.1:3000
+  server: github.com
 nacos:
-  server:
-    wuxi: 192.168.137.1:8848
-    nanjing: 192.168.137.1:8848
-    wuxiSand: 192.168.137.1:8848
-    nanjingSand: 192.168.137.1:8848
+  server: 192.168.137.1:8848

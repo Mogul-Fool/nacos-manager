@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 @Service
 public class GogsConfigFileServiceImpl implements GogsConfigFileService {
@@ -20,11 +21,11 @@ public class GogsConfigFileServiceImpl implements GogsConfigFileService {
         String tempString;
         OkHttpClient okHttpClient = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl
-                .parse("http://" + gogsAddr + "/" + fullName + "/src/" + branchName + "/" + filePath).newBuilder();
+                .parse("https://" + gogsAddr + "/" + fullName + "/blob/" + branchName + "/" + filePath).newBuilder();
         urlBuilder.addQueryParameter("token", token);
         //http://127.0.0.1:3000/web/test/src/wwj/src/main/resources/config
         String url = urlBuilder.build().toString();
-//        System.out.println(url);
+        System.out.println(url);
         Request request = new Request.Builder()
                 .url(url)
                 .build();
@@ -32,14 +33,13 @@ public class GogsConfigFileServiceImpl implements GogsConfigFileService {
         try {
             Response response = call.execute();
             resBody = response.body().string();
-            tempString = resBody.split("<ol class=\"linenums\">")[1];
-            tempString = tempString.split("</ol></code></pre></td>")[0];
-            String[] yamlStr = tempString.split("</li>");
-            String[] yamlStr2 = new String[yamlStr.length];
+            tempString = resBody.split("rawLines\":\\[")[1];
+            tempString = tempString.split("\"],\"stylingDirectives")[0];
+            String[] yamlStr = tempString.split(",");
             StringBuffer sb = new StringBuffer();
             for(int i = 0; i < yamlStr.length - 1; i++) {
-                yamlStr2[i] = yamlStr[i].split("\">")[1];
-                sb.append(yamlStr2[i]);
+                yamlStr[i] = yamlStr[i].substring(1,yamlStr[i].length()-1);
+                sb.append(yamlStr[i]);
                 sb.append("\n");
             }
             if (StringUtils.isEmpty(resBody)) {

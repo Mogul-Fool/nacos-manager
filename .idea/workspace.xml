@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ecbacbd4-004e-4c4f-bc2a-147450383f10" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="ecbacbd4-004e-4c4f-bc2a-147450383f10" name="更改" comment="基本功能实现，swagger可测试。">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wwj/NacosConfigApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wwj/NacosConfigApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wwj/service/impl/GogsConfigFileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wwj/service/impl/GogsConfigFileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wwj/service/impl/NacosConfigManagerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wwj/service/impl/NacosConfigManagerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wwj/service/impl/GogsConfigFileServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wwj/service/impl/GogsConfigFileServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wwj/service/impl/NacosConfigManagerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wwj/service/impl/NacosConfigManagerServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +47,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/wang-/Desktop/工作资料/代码/nacos-manager&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wang-/Desktop/工作资料/代码/nacos-config&quot;,
     &quot;project.structure.last.edited&quot;: &quot;问题&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.22643678&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;57b83f437079797c8a2f11a836c0af13&quot;
   }
 }</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wang-\Desktop\nacos-manager\src\main\resources" />
@@ -80,8 +87,26 @@
       <workItem from="1691650675999" duration="187000" />
       <workItem from="1691715243977" duration="942000" />
       <workItem from="1691718934400" duration="609000" />
-      <workItem from="1691719557731" duration="421000" />
+      <workItem from="1691719557731" duration="896000" />
+      <workItem from="1691720466392" duration="335000" />
+      <workItem from="1691720812905" duration="5035000" />
+      <workItem from="1691736181824" duration="9287000" />
     </task>
+    <task id="LOCAL-00001" summary="基本功能实现，swagger可测试。">
+      <created>1691720015398</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691720015399</updated>
+    </task>
+    <task id="LOCAL-00002" summary="基本功能实现，swagger可测试。">
+      <created>1691720049611</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691720049611</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,5 +122,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="基本功能实现，swagger可测试。" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本功能实现，swagger可测试。" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/wwj/service/impl/NacosConfigManagerServiceImpl.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/nacos_manager$NacosConfigApplication.ic" NAME="NacosConfigApplication 覆盖结果" MODIFIED="1691744637377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
