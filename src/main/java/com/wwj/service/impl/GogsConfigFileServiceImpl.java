@@ -1,5 +1,6 @@
 package com.wwj.service.impl;
 
+import com.wwj.bean.NacosConfigYamlFile;
 import com.wwj.service.GogsConfigFileService;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class GogsConfigFileServiceImpl implements GogsConfigFileService {
@@ -19,27 +22,22 @@ public class GogsConfigFileServiceImpl implements GogsConfigFileService {
         String resBody;
         String tempString;
         OkHttpClient okHttpClient = new OkHttpClient();
-        HttpUrl.Builder urlBuilder = HttpUrl
-                .parse("http://" + gogsAddr + "/" + fullName + "/src/" + branchName + "/" + filePath).newBuilder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("https://" + gogsAddr + "/" + fullName
+                + "/blob/" + branchName + "/" + filePath).newBuilder();
         urlBuilder.addQueryParameter("token", token);
-        //http://127.0.0.1:3000/web/test/src/wwj/src/main/resources/config
         String url = urlBuilder.build().toString();
-//        System.out.println(url);
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        Request request = new Request.Builder().url(url).build();
         Call call = okHttpClient.newCall(request);
         try {
             Response response = call.execute();
             resBody = response.body().string();
-            tempString = resBody.split("<ol class=\"linenums\">")[1];
-            tempString = tempString.split("</ol></code></pre></td>")[0];
-            String[] yamlStr = tempString.split("</li>");
-            String[] yamlStr2 = new String[yamlStr.length];
-            StringBuffer sb = new StringBuffer();
+            tempString = resBody.split("rawLines\":\\[")[1];
+            tempString = tempString.split("\"],\"stylingDirectives")[0];
+            String[] yamlStr = tempString.split(",");
+            StringBuilder sb = new StringBuilder();
             for(int i = 0; i < yamlStr.length - 1; i++) {
-                yamlStr2[i] = yamlStr[i].split("\">")[1];
-                sb.append(yamlStr2[i]);
+                yamlStr[i] = yamlStr[i].substring(1,yamlStr[i].length()-1);
+                sb.append(yamlStr[i]);
                 sb.append("\n");
             }
             if (StringUtils.isEmpty(resBody)) {
@@ -51,4 +49,36 @@ public class GogsConfigFileServiceImpl implements GogsConfigFileService {
         }
     }
 
+    @Override
+    public List<NacosConfigYamlFile> getAllConfigFromGogs(String fullName, String branchName, String serverName, String token) {
+        //发送一个http请求，获取仓库的指定类型的文件
+        String resBody;
+        String[] tempString;
+        OkHttpClient okHttpClient = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse("http://" + gogsAddr + "/" + fullName
+                + "/tree/" + branchName + "/" + serverName).newBuilder();
+        urlBuilder.addQueryParameter("token", token);
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder().url(url).build();
+        Call call = okHttpClient.newCall(request);
+        List<NacosConfigYamlFile> yamlFiles = new ArrayList<>();
+        try {
+            Response response = call.execute();
+            resBody = response.body().string();
+            tempString = resBody.split("items\":\\[\\{\"name\":\"");
+            String tempMedium = tempString[1];
+            tempMedium = tempMedium.split("templateDirectorySuggestionUrl")[0];
+            tempString = tempMedium.split("name\":\"");
+            for (String s : tempString) {
+                String temp = s.split(".yml\",\"path")[0];
+                NacosConfigYamlFile tempFile = new NacosConfigYamlFile();
+                tempFile.setDataId(temp + ".yml");
+                tempFile.setGroup("DEFAULT_GROUP");
+                yamlFiles.add(tempFile);
+            }
+            return yamlFiles;
+        } catch (IOException e) {
+            return null;
+        }
+    }
 }

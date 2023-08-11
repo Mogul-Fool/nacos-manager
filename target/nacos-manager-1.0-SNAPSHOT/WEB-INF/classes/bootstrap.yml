@@ -1,7 +1,5 @@
 server:
   port: 10000  #启动端口
-gogs:
-  server: github.com
 spring:
   files:
     yamlFiles:
@@ -38,14 +36,17 @@ spring:
       - test
       - release
       - main
-      - commit
-    Token: 02b90b42ef205b3c0309bf8d3dc9df7ef0e3e804
+    gogsToken: 02b90b42ef205b3c0309bf8d3dc9df7ef0e3e804
     nacosServers:
       - nacosName: nanjing
-        nacosAddr: 192.168.137.1:8848
+        nacosAddr: 43.155.153.143:8848
       - nacosName: wuxi
-        nacosAddr: 192.168.137.1:8848
+        nacosAddr: 43.155.153.143:8848
       - nacosName: nanjingSand
-        nacosAddr: 192.168.137.1:8848
+        nacosAddr: 43.155.153.143:8848
       - nacosName: wuxiSand
-        nacosAddr: 192.168.137.1:8848
+        nacosAddr: 43.155.153.143:8848
+gogs:
+  server: github.com
+nacos:
+  server: 43.155.153.143:8848

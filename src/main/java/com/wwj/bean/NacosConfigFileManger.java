@@ -13,8 +13,10 @@ public class NacosConfigFileManger {
 
     private List<NacosConfigYamlFile> yamlFiles;
 
+    private List<NacosConfigServer> nacosServers;
+
     private List<String> branches;
 
-    private String gogsToken;
+    private String Token;
 
 }

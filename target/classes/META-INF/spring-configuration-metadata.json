@@ -18,6 +18,11 @@
       "sourceType": "com.wwj.bean.NacosConfigFileManger"
     },
     {
+      "name": "spring.files.nacos-servers",
+      "type": "java.util.List<com.wwj.bean.NacosConfigServer>",
+      "sourceType": "com.wwj.bean.NacosConfigFileManger"
+    },
+    {
       "name": "spring.files.yaml-files",
       "type": "java.util.List<com.wwj.bean.NacosConfigYamlFile>",
       "sourceType": "com.wwj.bean.NacosConfigFileManger"
