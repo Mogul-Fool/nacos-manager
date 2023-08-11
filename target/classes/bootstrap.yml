@@ -1,0 +1,35 @@
+server:
+  port: 10002  #启动端口
+spring:
+  files:
+    yamlFiles:
+      - dataId: bootstrap1.yml
+        group: DEFAULT_GROUP
+      - dataId: bootstrap2.yml
+        group: DEFAULT_GROUP
+      - dataId: bootstrap3.yml
+        group: DEFAULT_GROUP
+    branches:
+      - master
+      - wwj
+    gogsToken: 83d583f4cf65c78bedbbeaf234bb0f104b5b7d38
+  application:
+    name: iot-nacos-manager
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://192.168.137.1:8848
+        metadata:
+          version: '@version@'
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yaml
+        name: iot-nacos-manager
+gogs:
+  server: 127.0.0.1:3000
+nacos:
+  server:
+    wuxi: 192.168.137.1:8848
+    nanjing: 192.168.137.1:8848
+    wuxiSand: 192.168.137.1:8848
+    nanjingSand: 192.168.137.1:8848

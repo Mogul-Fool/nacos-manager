@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "spring.files",
+      "type": "com.wwj.bean.NacosConfigFileManger",
+      "sourceType": "com.wwj.bean.NacosConfigFileManger"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.files.branches",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.wwj.bean.NacosConfigFileManger"
+    },
+    {
+      "name": "spring.files.gogs-token",
+      "type": "java.lang.String",
+      "sourceType": "com.wwj.bean.NacosConfigFileManger"
+    },
+    {
+      "name": "spring.files.yaml-files",
+      "type": "java.util.List<com.wwj.bean.NacosConfigYamlFile>",
+      "sourceType": "com.wwj.bean.NacosConfigFileManger"
+    }
+  ],
+  "hints": []
+}
